@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>คู่มือใช้งานย่อ ปั๊ม LX SFP220-VS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5f1;--card:#fff;--ink:#22221f;--sub:#6b6a64;--line:#e4e2da;--key:#f1efe8;--keyb:#c9c7bd;
+--m:#534AB7;--mbg:#EEEDFE;--a:#0F6E56;--abg:#E1F5EE;--warn:#854F0B;--wbg:#FAEEDA;--dan:#A32D2D;--dbg:#FCEBEB;--ok:#3B6D11}
+@media (prefers-color-scheme:dark){:root{--bg:#161614;--card:#1f1f1d;--ink:#ecebe6;--sub:#a3a199;--line:#33332f;--key:#2c2c2a;--keyb:#55554f;
+--m:#AFA9EC;--mbg:#2a2650;--a:#5DCAA5;--abg:#0f3a30;--warn:#FAC775;--wbg:#3d2a0a;--dan:#F09595;--dbg:#3d1414;--ok:#97C459}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Thai",system-ui,sans-serif;font-size:16px;line-height:1.65}
+.wrap{max-width:560px;margin:0 auto;padding:16px 14px 48px}
+h1{font-size:21px;font-weight:600;margin:4px 0 2px}
+.lead{color:var(--sub);font-size:14px;margin:0 0 12px}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;gap:6px;padding:8px 0;margin-bottom:6px;overflow-x:auto}
+nav a{flex:0 0 auto;text-decoration:none;color:var(--ink);font-size:14px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px}
+nav a.on{border-color:var(--ink);font-weight:500}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 14px 10px;margin:12px 0;scroll-margin-top:56px}
+h2{font-size:18px;font-weight:600;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.badge{font-size:13px;font-weight:600;border-radius:7px;padding:1px 9px}
+.k{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:28px;padding:0 7px;border-radius:14px;border:1px solid var(--keyb);background:var(--key);font-size:13px;font-weight:600;margin:1px 2px;vertical-align:middle;white-space:nowrap}
+.hold{display:inline-block;font-size:12px;color:var(--warn);background:var(--wbg);border-radius:6px;padding:0 7px;margin-left:3px;vertical-align:middle;white-space:nowrap}
+ol.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+ol.steps li{counter-increment:s;display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+ol.steps li:first-child{border-top:none}
+ol.steps li::before{content:counter(s);flex:0 0 26px;height:26px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;background:var(--key)}
+#manual ol.steps li::before{background:var(--mbg);color:var(--m)}
+#auto ol.steps li::before{background:var(--abg);color:var(--a)}
+.check{margin:8px 0 4px;padding:10px 12px;border-radius:10px;background:var(--bg)}
+.check h3{font-size:14px;font-weight:600;margin:0 0 4px}
+.check label{display:flex;gap:8px;align-items:flex-start;font-size:14px;padding:3px 0;cursor:pointer}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--ok)}
+.note{font-size:13px;color:var(--sub);margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{text-align:left;padding:6px 4px;border-top:1px solid var(--line);vertical-align:top}
+th{font-weight:600;color:var(--sub);font-size:13px;border-top:none}
+.alert{background:var(--dbg);border-color:transparent;color:var(--dan)}
+.alert h2{color:var(--dan)}
+.pad{display:block;width:100%;max-width:380px;margin:0 auto}
+button.reset{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:8px;padding:4px 10px;margin-top:6px;cursor:pointer}
+.brand{font-size:12px;color:var(--sub);letter-spacing:.2px}
+.chart{display:block;width:100%;height:auto}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .ax{font-size:10px;fill:var(--sub)}
+.chart .env{fill:#D85A30;fill-opacity:.10}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;margin:6px 0 8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:18px;height:3px;border-radius:2px}
+.tscroll{overflow-x:auto}
+.tscroll table td,.tscroll table th{white-space:nowrap;text-align:center}
+.tscroll table td:first-child,.tscroll table th:first-child{text-align:left}
+.spec td:first-child{color:var(--sub);width:44%}
+.credit{border-top:1px solid var(--line);margin-top:20px;padding-top:12px}
+footer{color:var(--sub);font-size:12px;text-align:center;margin-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="brand">จัดทำโดย <b>RIT ANAN</b> · ritanan.com</div>
+<h1>คู่มือใช้งานย่อ ปั๊ม LX SFP220-VS</h1>
+<p class="lead">ปั๊มสระว่ายน้ำปรับรอบ (อินเวอร์เตอร์) 2.2 HP · การตั้งค่า Manual / Auto · กราฟอัตราการไหล · การต่อท่อ</p>
+
+<nav id="nav">
+<a href="#keys">แผงปุ่ม</a><a href="#before">ก่อนเริ่ม</a><a href="#manual">Manual</a><a href="#auto">Auto</a><a href="#curve">กราฟการไหล</a><a href="#pipe">การต่อท่อ</a><a href="#errors">Error</a>
+</nav>
+
+<section id="keys">
+<h2>แผงปุ่ม</h2>
+<svg class="pad" viewBox="0 0 380 250" role="img" aria-label="แผงปุ่มปั๊ม LX">
+<rect x="60" y="10" width="260" height="200" rx="16" fill="#2C2C2A" stroke="#5F5E5A"/>
+<rect x="110" y="26" width="160" height="76" rx="6" fill="#C0DD97"/>
+<text x="120" y="42" font-size="11" fill="#173404">08:30</text>
+<text x="226" y="42" font-size="11" fill="#173404">M / A</text>
+<text x="190" y="72" text-anchor="middle" dominant-baseline="central" font-size="22" font-weight="600" fill="#173404" font-family="monospace">3000 rpm</text>
+<text x="190" y="94" text-anchor="middle" font-size="11" fill="#173404">08:00–10:00  SPEED 1</text>
+<g fill="#444441" stroke="#888780">
+<circle cx="85" cy="44" r="14"/><circle cx="85" cy="86" r="14"/><circle cx="295" cy="44" r="14"/><circle cx="295" cy="86" r="14"/>
+<circle cx="110" cy="160" r="16"/><circle cx="160" cy="160" r="16"/><circle cx="210" cy="160" r="16"/><circle cx="265" cy="160" r="16"/></g>
+<g font-size="12" fill="#F1EFE8" text-anchor="middle" dominant-baseline="central">
+<text x="85" y="44">▲</text><text x="85" y="86">▼</text><text x="295" y="44">⏻</text><text x="295" y="86">Tab</text>
+<text x="110" y="160">1</text><text x="160" y="160">2</text><text x="210" y="160">3</text><text x="265" y="160">QC</text></g>
+<text x="190" y="196" text-anchor="middle" font-size="12" fill="#B4B2A9">เกียร์ 1 · 2 · 3 · Quick Clean</text>
+</svg>
+<table>
+<tr><td><span class="k">⏻</span></td><td>เดิน / หยุดปั๊ม</td></tr>
+<tr><td><span class="k">▲</span><span class="k">▼</span></td><td>เพิ่ม / ลด ค่ารอบหรือเวลา</td></tr>
+<tr><td><span class="k">Tab</span></td><td>เลื่อนช่องตอนตั้งค่า · กดดูวัตต์ · ค้าง 3 วิ ตั้งนาฬิกา</td></tr>
+<tr><td><span class="k">1</span><span class="k">2</span><span class="k">3</span></td><td>เกียร์ความเร็ว · ค้าง 3 วิ เข้าตั้งค่า</td></tr>
+<tr><td><span class="k">QC</span></td><td>Quick Clean 3450 rpm · ค้าง 3 วิ (โหมด Auto) ตั้งรอบดูดน้ำ</td></tr>
+</table>
+<p class="note">ตั้งค่าแล้วไม่กดอะไร 6 วินาที เครื่องบันทึกและออกจากโหมดตั้งค่าเอง</p>
+</section>
+
+<section id="before">
+<h2>ก่อนเริ่มทุกครั้ง</h2>
+<ol class="steps">
+<li><span>เติมน้ำในหม้อกรองจนถึงระดับท่อเข้า เปิดวาล์วดูดและวาล์วส่งให้หมด</span></li>
+<li><span>เปิดเบรกเกอร์ (ต้องมีกันดูด) ไฟ POWER ติด</span></li>
+<li><span>ตั้งนาฬิกา: <span class="k">Tab</span><span class="hold">ค้าง 3 วิ</span> → <span class="k">▲</span><span class="k">▼</span> ชั่วโมง → <span class="k">Tab</span> → <span class="k">▲</span><span class="k">▼</span> นาที → รอ 6 วิ</span></li>
+<li><span>ดูไอคอนบนจอ <b>M</b> = Manual, <b>A</b> = Auto · สลับโหมดตอนปั๊มหยุด: <span class="k">Tab</span>+<span class="k">▼</span><span class="hold">ค้าง 3 วิ</span></span></li>
+</ol>
+</section>
+
+<section id="manual">
+<h2><span class="badge" style="background:var(--mbg);color:var(--m)">M</span>ทดสอบโหมด Manual</h2>
+<p class="note">เดินความเร็วเดียวต่อเนื่องจนกว่าจะสั่งหยุด · ตั้งได้แค่ความเร็ว</p>
+<table>
+<tr><th>เกียร์</th><th>ค่าโรงงาน</th></tr>
+<tr><td><span class="k">1</span></td><td>3000 rpm</td></tr>
+<tr><td><span class="k">2</span></td><td>1400 rpm</td></tr>
+<tr><td><span class="k">3</span></td><td>2200 rpm</td></tr>
+<tr><td><span class="k">QC</span></td><td>3450 rpm</td></tr>
+</table>
+<ol class="steps" style="margin-top:8px">
+<li><span>ให้จอขึ้น <b>M</b> แล้วกดเลือกเกียร์ <span class="k">1</span></span></li>
+<li><span>กด <span class="k">⏻</span> → ปั๊มดูดน้ำ 3450 rpm นาน 10 นาที (จอนับถอยหลัง) แล้วเดินที่เกียร์ที่เลือก</span></li>
+<li><span>เปลี่ยนรอบ: <span class="k">1</span><span class="hold">ค้าง 3 วิ</span> → ตัวเลขกะพริบ → <span class="k">▲</span><span class="k">▼</span> → รอ 6 วิ</span></li>
+<li><span>กด <span class="k">Tab</span> ดูวัตต์ จดค่าไว้ แล้วไล่ <span class="k">2</span> <span class="k">3</span> <span class="k">QC</span></span></li>
+<li><span>กด <span class="k">⏻</span> หยุด</span></li>
+</ol>
+<div class="check" data-group="m">
+<h3>เช็คผล</h3>
+<label><input type="checkbox">รอบบนจอตรงกับที่ตั้ง</label>
+<label><input type="checkbox">ดูดน้ำขึ้น หม้อกรองเต็ม ไม่มีฟองอากาศค้าง</label>
+<label><input type="checkbox">เสียงเรียบ ไม่สั่นผิดปกติ</label>
+<label><input type="checkbox">ข้อต่อไม่รั่ว</label>
+<label><input type="checkbox">ไม่ขึ้นรหัส E</label>
+<button class="reset" type="button">ล้างเครื่องหมาย</button>
+</div>
+</section>
+
+<section id="auto">
+<h2><span class="badge" style="background:var(--abg);color:var(--a)">A</span>ทดสอบโหมด Auto</h2>
+<p class="note">เดินตามช่วงเวลาที่ตั้ง · นอกช่วงเวลาปั๊มหยุดเอง</p>
+<table>
+<tr><th>ช่วง</th><th>รอบ</th><th>เวลา (ค่าโรงงาน)</th></tr>
+<tr><td>Speed 1</td><td>3000</td><td>08:00–10:00</td></tr>
+<tr><td>Speed 2</td><td>1400</td><td>10:00–20:00</td></tr>
+<tr><td>Speed 3</td><td>2200</td><td>20:00–22:00</td></tr>
+</table>
+<ol class="steps" style="margin-top:8px">
+<li><span>ปั๊มหยุด → <span class="k">Tab</span>+<span class="k">▼</span><span class="hold">ค้าง 3 วิ</span> จนจอขึ้น <b>A</b></span></li>
+<li><span>ตั้งช่วงเวลา: <span class="k">1</span><span class="hold">ค้าง 3 วิ</span> → <span class="k">▲</span><span class="k">▼</span> รอบ → <span class="k">Tab</span> → เวลาเริ่ม → <span class="k">Tab</span> → เวลาจบ → รอ 6 วิ</span></li>
+<li><span><b>ตั้งเพื่อทดสอบ:</b> Speed 1 เริ่มอีก 15 นาทีจากเวลาบนจอ ยาว 15 นาที · Speed 2 ต่อทันทีอีก 15 นาที</span></li>
+<li><span>(ถ้าอยากย่นเวลา) ตั้งรอบดูดน้ำ: <span class="k">QC</span><span class="hold">ค้าง 3 วิ</span> → <span class="k">▲</span><span class="k">▼</span> รอบ → <span class="k">Tab</span> → <span class="k">▲</span><span class="k">▼</span> นาที</span></li>
+<li><span>กด <span class="k">⏻</span> → ปั๊มดูดน้ำก่อน แล้วรอเวลาเริ่ม</span></li>
+</ol>
+<p class="note">ห้ามตั้งช่วงเวลาข้ามเที่ยงคืน · รวม 3 ช่วงไม่เกิน 24 ชม. · ช่วงซ้อนกันเครื่องเลือก 1 &gt; 2 &gt; 3 · ไม่อยากให้เดินช่วงไหนตั้งรอบ = 0</p>
+<div class="check" data-group="a">
+<h3>เช็คผล</h3>
+<label><input type="checkbox">ถึงเวลาเริ่ม ปั๊มเดินเอง</label>
+<label><input type="checkbox">เปลี่ยน Speed 1 → 2 ตรงเวลา</label>
+<label><input type="checkbox">พ้นเวลาจบ ปั๊มหยุดเอง</label>
+<label><input type="checkbox">ปิดเบรกเกอร์แล้วเปิดใหม่ นาฬิกายังตรง และกลับเข้าตารางเอง</label>
+<button class="reset" type="button">ล้างเครื่องหมาย</button>
+</div>
+</section>
+
+<section id="curve">
+<h2>กราฟอัตราการไหล (Performance curve)</h2>
+<p class="note">เส้นส้มทึบคือข้อมูลผู้ผลิตที่รอบสูงสุด 3450 rpm · พื้นที่แรเงาคือช่วงใช้งานตามคู่มือ · เส้นประคือค่าประมาณที่รอบอื่น คำนวณด้วยกฎ Affinity (Q แปรตามรอบ, H แปรตามรอบยกกำลังสอง)</p>
+<svg viewBox="0 0 360 260" class="chart" role="img" aria-label="กราฟอัตราการไหลกับระยะส่ง SFP220-VS">
+<line x1="40" y1="224.0" x2="348" y2="224.0" class="grid"/><text x="34" y="228.0" text-anchor="end" class="ax">0</text>
+<line x1="40" y1="181.6" x2="348" y2="181.6" class="grid"/><text x="34" y="185.6" text-anchor="end" class="ax">5</text>
+<line x1="40" y1="139.2" x2="348" y2="139.2" class="grid"/><text x="34" y="143.2" text-anchor="end" class="ax">10</text>
+<line x1="40" y1="96.8" x2="348" y2="96.8" class="grid"/><text x="34" y="100.8" text-anchor="end" class="ax">15</text>
+<line x1="40" y1="54.4" x2="348" y2="54.4" class="grid"/><text x="34" y="58.4" text-anchor="end" class="ax">20</text>
+<line x1="40" y1="12.0" x2="348" y2="12.0" class="grid"/><text x="34" y="16.0" text-anchor="end" class="ax">25</text>
+<line x1="40.0" y1="12" x2="40.0" y2="224" class="grid"/><text x="40.0" y="238" text-anchor="middle" class="ax">0</text>
+<line x1="96.0" y1="12" x2="96.0" y2="224" class="grid"/><text x="96.0" y="238" text-anchor="middle" class="ax">100</text>
+<line x1="152.0" y1="12" x2="152.0" y2="224" class="grid"/><text x="152.0" y="238" text-anchor="middle" class="ax">200</text>
+<line x1="208.0" y1="12" x2="208.0" y2="224" class="grid"/><text x="208.0" y="238" text-anchor="middle" class="ax">300</text>
+<line x1="264.0" y1="12" x2="264.0" y2="224" class="grid"/><text x="264.0" y="238" text-anchor="middle" class="ax">400</text>
+<line x1="320.0" y1="12" x2="320.0" y2="224" class="grid"/><text x="320.0" y="238" text-anchor="middle" class="ax">500</text>
+<text x="194.0" y="256" text-anchor="middle" class="ax">อัตราการไหล (ลิตร/นาที)</text>
+<text x="42" y="22" class="ax">ระยะส่ง (เมตร)</text>
+<polygon points="40.0,28.1 42.8,28.5 45.6,28.8 48.4,29.1 51.2,29.5 54.0,29.8 56.8,30.1 59.6,30.5 62.4,30.8 65.2,31.2 68.0,31.5 70.8,31.8 73.6,32.2 76.4,32.5 79.2,32.9 82.0,33.2 84.8,33.5 87.6,33.9 90.4,34.2 93.2,34.6 96.0,34.9 98.8,35.8 101.6,36.8 104.4,37.7 107.2,38.6 110.0,39.6 112.8,40.5 115.6,41.4 118.4,42.4 121.2,43.3 124.0,44.2 126.8,45.2 129.6,46.1 132.4,47.0 135.2,48.0 138.0,48.9 140.8,49.8 143.6,50.8 146.4,51.7 149.2,52.6 152.0,53.6 154.8,55.5 157.6,57.4 160.4,59.3 163.2,61.2 166.0,63.1 168.8,65.0 171.6,66.9 174.4,68.8 177.2,70.7 180.0,72.6 182.8,74.5 185.6,76.4 188.4,78.4 191.2,80.3 194.0,82.2 196.8,84.1 199.6,86.0 202.4,87.9 205.2,89.8 208.0,91.7 210.8,93.7 213.6,95.8 216.4,97.8 219.2,99.9 222.0,101.9 224.8,103.9 227.6,106.0 230.4,108.0 233.2,110.0 236.0,112.1 238.8,114.1 241.6,116.1 244.4,118.2 247.2,120.2 250.0,122.2 252.8,124.3 255.6,126.3 258.4,128.3 261.2,130.4 264.0,132.4 266.8,134.8 269.6,137.2 272.4,139.7 275.2,142.1 278.0,144.5 280.8,146.9 283.6,149.3 286.4,151.8 289.2,154.2 292.0,156.6 294.8,159.0 297.6,161.4 300.4,163.8 303.2,166.3 306.0,168.7 308.8,171.1 311.6,173.5 314.4,175.9 317.2,178.3 320.0,180.8 322.8,182.7 325.6,184.7 328.4,186.7 328.4,186.7 320.0,193.5 264.0,200.3 208.0,203.6 152.0,207.0 96.0,206.2 40.0,194.3" class="env"/>
+<polyline points="40.0,28.1 42.8,28.5 45.6,28.8 48.4,29.1 51.2,29.5 54.0,29.8 56.8,30.1 59.6,30.5 62.4,30.8 65.2,31.2 68.0,31.5 70.8,31.8 73.6,32.2 76.4,32.5 79.2,32.9 82.0,33.2 84.8,33.5 87.6,33.9 90.4,34.2 93.2,34.6 96.0,34.9 98.8,35.8 101.6,36.8 104.4,37.7 107.2,38.6 110.0,39.6 112.8,40.5 115.6,41.4 118.4,42.4 121.2,43.3 124.0,44.2 126.8,45.2 129.6,46.1 132.4,47.0 135.2,48.0 138.0,48.9 140.8,49.8 143.6,50.8 146.4,51.7 149.2,52.6 152.0,53.6 154.8,55.5 157.6,57.4 160.4,59.3 163.2,61.2 166.0,63.1 168.8,65.0 171.6,66.9 174.4,68.8 177.2,70.7 180.0,72.6 182.8,74.5 185.6,76.4 188.4,78.4 191.2,80.3 194.0,82.2 196.8,84.1 199.6,86.0 202.4,87.9 205.2,89.8 208.0,91.7 210.8,93.7 213.6,95.8 216.4,97.8 219.2,99.9 222.0,101.9 224.8,103.9 227.6,106.0 230.4,108.0 233.2,110.0 236.0,112.1 238.8,114.1 241.6,116.1 244.4,118.2 247.2,120.2 250.0,122.2 252.8,124.3 255.6,126.3 258.4,128.3 261.2,130.4 264.0,132.4 266.8,134.8 269.6,137.2 272.4,139.7 275.2,142.1 278.0,144.5 280.8,146.9 283.6,149.3 286.4,151.8 289.2,154.2 292.0,156.6 294.8,159.0 297.6,161.4 300.4,163.8 303.2,166.3 306.0,168.7 308.8,171.1 311.6,173.5 314.4,175.9 317.2,178.3 320.0,180.8 322.8,182.7 325.6,184.7 328.4,186.7" fill="none" stroke="#D85A30" stroke-width="2.2" stroke-dasharray=""/>
+<polyline points="40.0,75.9 42.4,76.1 44.9,76.4 47.3,76.6 49.7,76.9 52.2,77.2 54.6,77.4 57.0,77.7 59.5,77.9 61.9,78.2 64.3,78.4 66.8,78.7 69.2,79.0 71.7,79.2 74.1,79.5 76.5,79.7 79.0,80.0 81.4,80.2 83.8,80.5 86.3,80.8 88.7,81.0 91.1,81.7 93.6,82.4 96.0,83.1 98.4,83.8 100.9,84.5 103.3,85.2 105.7,85.9 108.2,86.7 110.6,87.4 113.0,88.1 115.5,88.8 117.9,89.5 120.3,90.2 122.8,90.9 125.2,91.6 127.7,92.3 130.1,93.0 132.5,93.7 135.0,94.4 137.4,95.1 139.8,96.6 142.3,98.0 144.7,99.4 147.1,100.9 149.6,102.3 152.0,103.8 154.4,105.2 156.9,106.7 159.3,108.1 161.7,109.5 164.2,111.0 166.6,112.4 169.0,113.9 171.5,115.3 173.9,116.8 176.3,118.2 178.8,119.6 181.2,121.1 183.7,122.5 186.1,124.0 188.5,125.5 191.0,127.0 193.4,128.6 195.8,130.1 198.3,131.7 200.7,133.2 203.1,134.7 205.6,136.3 208.0,137.8 210.4,139.4 212.9,140.9 215.3,142.4 217.7,144.0 220.2,145.5 222.6,147.1 225.0,148.6 227.5,150.1 229.9,151.7 232.3,153.2 234.8,154.7 237.2,156.6 239.7,158.4 242.1,160.2 244.5,162.1 247.0,163.9 249.4,165.7 251.8,167.5 254.3,169.4 256.7,171.2 259.1,173.0 261.6,174.9 264.0,176.7 266.4,178.5 268.9,180.3 271.3,182.2 273.7,184.0 276.2,185.8 278.6,187.6 281.0,189.5 283.5,191.3 285.9,192.8 288.3,194.3 290.8,195.8" fill="none" stroke="#7F77DD" stroke-width="2.2" stroke-dasharray="6 4"/>
+<polyline points="40.0,144.3 41.8,144.5 43.6,144.6 45.4,144.8 47.1,144.9 48.9,145.0 50.7,145.2 52.5,145.3 54.3,145.4 56.1,145.6 57.9,145.7 59.6,145.9 61.4,146.0 63.2,146.1 65.0,146.3 66.8,146.4 68.6,146.6 70.4,146.7 72.1,146.8 73.9,147.0 75.7,147.1 77.5,147.5 79.3,147.9 81.1,148.2 82.9,148.6 84.6,149.0 86.4,149.4 88.2,149.8 90.0,150.1 91.8,150.5 93.6,150.9 95.4,151.3 97.1,151.7 98.9,152.0 100.7,152.4 102.5,152.8 104.3,153.2 106.1,153.6 107.8,153.9 109.6,154.3 111.4,154.7 113.2,155.5 115.0,156.2 116.8,157.0 118.6,157.8 120.3,158.6 122.1,159.3 123.9,160.1 125.7,160.9 127.5,161.7 129.3,162.4 131.1,163.2 132.8,164.0 134.6,164.8 136.4,165.6 138.2,166.3 140.0,167.1 141.8,167.9 143.6,168.7 145.3,169.4 147.1,170.2 148.9,171.0 150.7,171.9 152.5,172.7 154.3,173.5 156.1,174.3 157.8,175.2 159.6,176.0 161.4,176.8 163.2,177.7 165.0,178.5 166.8,179.3 168.6,180.1 170.3,181.0 172.1,181.8 173.9,182.6 175.7,183.4 177.5,184.3 179.3,185.1 181.1,185.9 182.8,186.8 184.6,187.7 186.4,188.7 188.2,189.7 190.0,190.7 191.8,191.7 193.6,192.7 195.3,193.6 197.1,194.6 198.9,195.6 200.7,196.6 202.5,197.6 204.3,198.6 206.1,199.5 207.8,200.5 209.6,201.5 211.4,202.5 213.2,203.5 215.0,204.4 216.8,205.4 218.6,206.4 220.3,207.2 222.1,208.0 223.9,208.8" fill="none" stroke="#1D9E75" stroke-width="2.2" stroke-dasharray="6 4"/>
+<polyline points="40.0,191.7 41.1,191.8 42.3,191.9 43.4,191.9 44.5,192.0 45.7,192.0 46.8,192.1 48.0,192.1 49.1,192.2 50.2,192.2 51.4,192.3 52.5,192.4 53.6,192.4 54.8,192.5 55.9,192.5 57.0,192.6 58.2,192.6 59.3,192.7 60.5,192.7 61.6,192.8 62.7,192.9 63.9,193.0 65.0,193.2 66.1,193.3 67.3,193.5 68.4,193.6 69.5,193.8 70.7,193.9 71.8,194.1 73.0,194.2 74.1,194.4 75.2,194.5 76.4,194.7 77.5,194.9 78.6,195.0 79.8,195.2 80.9,195.3 82.0,195.5 83.2,195.6 84.3,195.8 85.4,195.9 86.6,196.2 87.7,196.6 88.9,196.9 90.0,197.2 91.1,197.5 92.3,197.8 93.4,198.1 94.5,198.4 95.7,198.8 96.8,199.1 97.9,199.4 99.1,199.7 100.2,200.0 101.4,200.3 102.5,200.6 103.6,201.0 104.8,201.3 105.9,201.6 107.0,201.9 108.2,202.2 109.3,202.6 110.4,202.9 111.6,203.2 112.7,203.6 113.9,203.9 115.0,204.2 116.1,204.6 117.3,204.9 118.4,205.2 119.5,205.6 120.7,205.9 121.8,206.2 122.9,206.6 124.1,206.9 125.2,207.2 126.4,207.6 127.5,207.9 128.6,208.2 129.8,208.6 130.9,208.9 132.0,209.3 133.2,209.7 134.3,210.1 135.4,210.5 136.6,210.9 137.7,211.3 138.9,211.7 140.0,212.1 141.1,212.5 142.3,212.9 143.4,213.3 144.5,213.7 145.7,214.1 146.8,214.5 147.9,214.9 149.1,215.3 150.2,215.7 151.4,216.1 152.5,216.5 153.6,216.9 154.8,217.2 155.9,217.5 157.0,217.9" fill="none" stroke="#378ADD" stroke-width="2.2" stroke-dasharray="6 4"/>
+</svg>
+<div class="legend">
+<span><i style="background:#D85A30"></i>3450 rpm</span><span><i style="background:#7F77DD"></i>3000 rpm</span><span><i style="background:#1D9E75"></i>2200 rpm</span><span><i style="background:#378ADD"></i>1400 rpm</span>
+</div>
+<h3 style="font-size:15px;margin:10px 0 4px">อัตราการไหลโดยประมาณ (ลิตร/นาที) ที่ระยะส่งรวม</h3>
+<div class="tscroll"><table>
+<tr><th>รอบ</th><th>3 ม.</th><th>5 ม.</th><th>8 ม.</th><th>10 ม.</th><th>12 ม.</th><th>15 ม.</th></tr>
+<tr><td>3450</td><td>≥515</td><td>502</td><td>449</td><td>414</td><td>375</td><td>312</td></tr>
+<tr><td>3000</td><td>≥448</td><td>412</td><td>351</td><td>304</td><td>256</td><td>179</td></tr>
+<tr><td>2200</td><td>293</td><td>235</td><td>134</td><td><span class="na">–</span></td><td><span class="na">–</span></td><td><span class="na">–</span></td></tr>
+<tr><td>1400</td><td>98</td><td><span class="na">–</span></td><td><span class="na">–</span></td><td><span class="na">–</span></td><td><span class="na">–</span></td><td><span class="na">–</span></td></tr>
+</table></div>
+<p class="note">ระยะส่งรวม (Total head) = ความสูงที่ยกน้ำ + แรงต้านในท่อ ข้อต่อ และถังกรอง · ระบบสระบ้านทั่วไปที่มีถังกรองทรายอยู่ราว 8–14 ม. · “–” = รอบนั้นส่งน้ำไม่ถึงระยะส่งนี้</p>
+<table class="spec">
+<tr><td>กำลัง</td><td>2.2 THP</td></tr>
+<tr><td>ไฟ</td><td>1 เฟส 115 / 208–230 V, 50/60 Hz</td></tr>
+<tr><td>กระแส</td><td>13.8 A (115 V) / 8.5–7.4 A (208–230 V)</td></tr>
+<tr><td>ระยะส่งสูงสุด (Hmax)</td><td>23 ม.</td></tr>
+<tr><td>อัตราการไหลสูงสุด (Qmax)</td><td>510 ลิตร/นาที (≈30 ม³/ชม.)</td></tr>
+<tr><td>ช่วงรอบ</td><td>450–3450 rpm</td></tr>
+<tr><td>ค่าประสิทธิภาพ WEF</td><td>8.8</td></tr>
+<tr><td>น้ำหนัก</td><td>20 กก.</td></tr>
+<tr><td>ขนาดตัวปั๊ม (ย×ก×ส)</td><td>572 × 264 × 274 มม. (ประมาณ)</td></tr>
+</table>
+<h3 style="font-size:15px;margin:12px 0 4px">อัตราการไหลที่ต้องใช้ตามขนาดสระ</h3>
+<p class="note">ให้น้ำหมุนเวียนผ่านถังกรองครบทั้งสระ 1 รอบ ภายใน 6–8 ชั่วโมง</p>
+<table>
+<tr><th>ปริมาตรสระ</th><th>หมุนครบใน 6 ชม.</th><th>หมุนครบใน 8 ชม.</th></tr>
+<tr><td>30 ม³</td><td>83 ล./นาที</td><td>62 ล./นาที</td></tr>
+<tr><td>50 ม³</td><td>139 ล./นาที</td><td>104 ล./นาที</td></tr>
+<tr><td>80 ม³</td><td>222 ล./นาที</td><td>167 ล./นาที</td></tr>
+<tr><td>100 ม³</td><td>278 ล./นาที</td><td>208 ล./นาที</td></tr>
+<tr><td>150 ม³</td><td>417 ล./นาที</td><td>312 ล./นาที</td></tr>
+</table>
+<p class="note">ปริมาตรสระ (ม³) = กว้าง × ยาว × ลึกเฉลี่ย · ใช้รอบต่ำเป็นหลักและเดินนานขึ้น ประหยัดไฟกว่าเดินรอบสูงช่วงสั้น</p>
+</section>
+
+<section id="pipe">
+<h2>คำแนะนำการต่อท่อ</h2>
+<svg class="chart" viewBox="0 0 360 150" role="img" aria-label="ระยะท่อตรงก่อนเข้าปั๊ม">
+<rect x="20" y="70" width="180" height="22" rx="3" fill="none" stroke="var(--sub)" stroke-width="1.5"/>
+<rect x="200" y="40" width="70" height="80" rx="8" fill="none" stroke="var(--sub)" stroke-width="1.5"/>
+<rect x="270" y="58" width="70" height="52" rx="8" fill="none" stroke="var(--sub)" stroke-width="1.5"/>
+<text x="235" y="134" text-anchor="middle" class="ax" style="fill:var(--sub)">หม้อกรอง</text>
+<text x="305" y="134" text-anchor="middle" class="ax" style="fill:var(--sub)">มอเตอร์</text>
+<line x1="70" y1="58" x2="198" y2="58" stroke="#1D9E75" stroke-width="1.5"/>
+<line x1="70" y1="52" x2="70" y2="64" stroke="#1D9E75" stroke-width="1.5"/><line x1="198" y1="52" x2="198" y2="64" stroke="#1D9E75" stroke-width="1.5"/>
+<text x="134" y="48" text-anchor="middle" class="ax" style="fill:#1D9E75">ท่อตรง ≥ 5 เท่าของขนาดท่อ</text>
+<rect x="56" y="64" width="14" height="34" rx="2" fill="#D85A30" fill-opacity=".25" stroke="#D85A30"/>
+<text x="63" y="114" text-anchor="middle" class="ax" style="fill:#D85A30">วาล์ว/ข้องอ</text>
+<text x="110" y="85" text-anchor="middle" class="ax">น้ำเข้า →</text>
+</svg>
+<ol class="steps">
+<li><span><b>ท่อดูดต้องโตเท่าหรือโตกว่าท่อส่ง</b> และสั้นที่สุดเท่าที่ทำได้ ติดตั้งปั๊มให้ใกล้สระ</span></li>
+<li><span><b>มีท่อตรงก่อนเข้าปั๊มอย่างน้อย 5 เท่าของขนาดท่อ</b> เช่น ท่อ 2" ต้องตรง ≥ 10" (25 ซม.) ก่อนถึงปากดูด ห้ามใส่ข้องอ 90° ชิดปากดูดหรือปากส่ง</span></li>
+<li><span>ใส่วาล์วทั้งฝั่งดูดและฝั่งส่ง เพื่อถอดล้างและซ่อมได้ง่าย · วาล์วฝั่งดูดต้องห่างปั๊มอย่างน้อย 5 เท่าของขนาดท่อ</span></li>
+<li><span>ใส่เช็ควาล์วที่ท่อส่ง ถ้าท่อหลังปั๊มยกสูง หรือต่อปั๊มขนานกับปั๊มตัวอื่น (กันใบพัดหมุนกลับ)</span></li>
+<li><span>วางปั๊มสูงกว่าระดับน้ำได้ไม่เกิน 2.6 ม. · ยึดปั๊มกับฐานให้แน่น · ห้ามวางในตู้ปิดหรือใต้ขอบอ่าง</span></li>
+<li><span>ระยะห่าง: จากขอบในสระ ≥ 1.5 ม. · จากทางออกฮีตเตอร์ ≥ 0.9 ม. · เว้นหลังมอเตอร์ ≥ 7.6 ซม. และเหนือแผงควบคุม ≥ 15 ซม. · ที่อากาศถ่ายเท มีหลังคากันแดดฝน</span></li>
+</ol>
+<h3 style="font-size:15px;margin:12px 0 4px">ขนาดท่อ PVC กับอัตราการไหลที่แนะนำ</h3>
+<div class="tscroll"><table>
+<tr><th>ขนาดท่อ</th><th>ฝั่งดูด (≤1.8 ม./วิ)</th><th>ฝั่งส่ง (≤2.4 ม./วิ)</th></tr>
+<tr><td>1½"</td><td>≤ 140 ล./นาที</td><td>≤ 190 ล./นาที</td></tr>
+<tr><td>2"</td><td>≤ 235 ล./นาที</td><td>≤ 310 ล./นาที</td></tr>
+<tr><td>2½"</td><td>≤ 330 ล./นาที</td><td>≤ 445 ล./นาที</td></tr>
+<tr><td>3"</td><td>≤ 515 ล./นาที</td><td>≤ 685 ล./นาที</td></tr>
+</table></div>
+<p class="note">ข้อต่อที่ตัวปั๊มรองรับ 1½" หรือ 2" (ANSI) · ถ้าใช้งานไหลเกิน ~230 ล./นาที แนะนำท่อดูด 2½" แล้วลดขนาดเข้าปั๊ม · ท่อเล็กเกินไปทำให้เสียงดัง กินไฟ และเสี่ยงอากาศเข้าปั๊ม · ตัวเลขคำนวณจากขนาดในท่อ Sch40 โดยประมาณ</p>
+<h3 style="font-size:15px;margin:12px 0 4px">การต่อไฟ</h3>
+<p class="note" style="color:var(--ink)">ใช้ไฟ 1 เฟส 220–230 V ต่อขั้ว L1 (สายไฟ), L2(N) (สายนิวทรัล), G (สายดิน) · ต้องผ่านเบรกเกอร์กันดูด · ต่อสายดินและสาย Bonding ครบ · ห้ามฝังสายไฟในดิน ห้ามใช้ปลั๊กพ่วง · ให้ช่างไฟที่มีใบอนุญาตเป็นผู้ติดตั้ง</p>
+</section>
+
+<section id="errors" class="alert">
+<h2>ข้อควรระวังและ Error</h2>
+<p style="margin:0 0 8px">ห้ามเดินตัวเปล่า ซีลพัง · ตัดไฟแล้วรอ 5 นาทีก่อนเปิดตู้</p>
+<table style="color:var(--ink)">
+<tr><th>รหัส</th><th>ความหมาย</th></tr>
+<tr><td>E001</td><td>โมดูล IPM เสีย / สายดินไม่ดี</td></tr>
+<tr><td>E002</td><td>กระแสเกิน (หายเอง)</td></tr>
+<tr><td>E006</td><td>ไฟเข้าสูงเกิน</td></tr>
+<tr><td>E009</td><td>ไฟเข้าต่ำเกิน</td></tr>
+<tr><td>E010</td><td>อินเวอร์เตอร์โหลดเกิน</td></tr>
+<tr><td>E011</td><td>มอเตอร์โหลดเกิน / ติดขัด</td></tr>
+<tr><td>E013</td><td>ไฟขาดเฟสด้านออก</td></tr>
+<tr><td>E014</td><td>อินเวอร์เตอร์ร้อนเกิน</td></tr>
+<tr><td>E018</td><td>วงจรวัดกระแสผิดปกติ</td></tr>
+<tr><td>E021</td><td>สายบอร์ดจอ-บอร์ดขับ / EEPROM</td></tr>
+<tr><td>E048</td><td>PFC กระแสเกิน / ไฟตก</td></tr>
+</table>
+<p class="note" style="color:var(--dan)">นอกจาก E002 ต้องปิดเบรกเกอร์แล้วเปิดใหม่ · รีเซ็ตค่าโรงงาน: ตอนหยุด <span class="k">Tab</span>+<span class="k">▲</span><span class="hold">ค้าง 3 วิ</span></p>
+</section>
+
+<footer class="credit">จัดทำโดย <b>RIT ANAN</b> · ritanan.com<br>เรียบเรียงจากคู่มือผู้ผลิต LX (Guangdong Lingxiao Pump Industry) Edition 2025.07 · ค่าที่ระบุว่า “ประมาณ” คำนวณโดย RIT ANAN เพื่อใช้อ้างอิงเบื้องต้น การออกแบบระบบจริงควรตรวจสอบหน้างาน · ข้อมูลอาจเปลี่ยนแปลงตามผู้ผลิต</footer>
+</div>
+<script>
+(function(){
+  var store=null;try{store=window.localStorage;store.getItem('x');}catch(e){store=null;}
+  document.querySelectorAll('.check').forEach(function(box){
+    var key='lxchk-'+box.dataset.group, boxes=box.querySelectorAll('input');
+    var saved=[];try{saved=JSON.parse(store&&store.getItem(key)||'[]');}catch(e){}
+    boxes.forEach(function(b,i){b.checked=!!saved[i];b.addEventListener('change',save);});
+    function save(){try{store&&store.setItem(key,JSON.stringify([].map.call(boxes,function(b){return b.checked;})));}catch(e){}}
+    box.querySelector('.reset').addEventListener('click',function(){boxes.forEach(function(b){b.checked=false;});save();});
+  });
+  var links=document.querySelectorAll('#nav a');
+  function mark(){var h=location.hash||'#keys';links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')===h);});}
+  window.addEventListener('hashchange',mark);mark();
+})();
+</script>
+</body>
+</html>
