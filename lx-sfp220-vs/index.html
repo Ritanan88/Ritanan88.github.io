@@ -55,6 +55,25 @@ button.reset{font:inherit;font-size:13px;border:1px solid var(--line);background
 .tscroll table td:first-child,.tscroll table th:first-child{text-align:left}
 .spec td:first-child{color:var(--sub);width:44%}
 .credit{border-top:1px solid var(--line);margin-top:20px;padding-top:12px}
+.cmp{width:100%;border-collapse:collapse;font-size:13.5px;table-layout:fixed}
+.cmp th,.cmp td{padding:7px 5px;border-top:1px solid var(--line);vertical-align:top;text-align:left}
+.cmp th{font-size:13px}
+.cmp td:first-child{color:var(--sub);width:26%}
+.pill{display:inline-block;font-size:12px;font-weight:600;border-radius:6px;padding:1px 8px;vertical-align:middle}
+.pro{background:var(--abg);color:var(--a)}.con{background:var(--wbg);color:var(--warn)}
+ul.l{margin:4px 0 0;padding-left:20px}ul.l li{margin:5px 0}
+details{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:var(--card)}
+details>summary{cursor:pointer;list-style:none;padding:10px 12px;font-weight:600;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+details>summary::-webkit-details-marker{display:none}
+details>summary::after{content:"+";font-size:18px;color:var(--sub)}
+details[open]>summary::after{content:"–"}
+details>.in{padding:0 12px 10px}
+.verdict{border-left:4px solid var(--a);background:var(--abg);padding:10px 12px;border-radius:0;margin:6px 0 10px;font-size:14.5px}
+.eng{counter-reset:e;list-style:none;padding:0;margin:0}
+.eng>li{counter-increment:e;padding:9px 0 9px 34px;position:relative;border-top:1px solid var(--line)}
+.eng>li:first-child{border-top:none}
+.eng>li::before{content:counter(e);position:absolute;left:0;top:9px;width:24px;height:24px;border-radius:12px;background:var(--key);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.eng b.t{display:block;margin-bottom:2px}
 footer{color:var(--sub);font-size:12px;text-align:center;margin-top:18px}
 </style>
 </head>
@@ -62,10 +81,10 @@ footer{color:var(--sub);font-size:12px;text-align:center;margin-top:18px}
 <div class="wrap">
 <div class="brand">จัดทำโดย <b>RIT ANAN</b> · ritanan.com</div>
 <h1>คู่มือใช้งานย่อ ปั๊ม LX SFP220-VS</h1>
-<p class="lead">ปั๊มสระว่ายน้ำปรับรอบ (อินเวอร์เตอร์) 2.2 HP · การตั้งค่า Manual / Auto · กราฟอัตราการไหล · การต่อท่อ</p>
+<p class="lead">ปั๊มสระว่ายน้ำปรับรอบ (อินเวอร์เตอร์) 2.2 HP · การตั้งค่า Manual / Auto · กราฟอัตราการไหล · การต่อท่อ · แนวทางใช้แทนปั๊มอ่างน้ำวน</p>
 
 <nav id="nav">
-<a href="#keys">แผงปุ่ม</a><a href="#before">ก่อนเริ่ม</a><a href="#manual">Manual</a><a href="#auto">Auto</a><a href="#curve">กราฟการไหล</a><a href="#pipe">การต่อท่อ</a><a href="#errors">Error</a>
+<a href="#keys">แผงปุ่ม</a><a href="#before">ก่อนเริ่ม</a><a href="#manual">Manual</a><a href="#auto">Auto</a><a href="#curve">กราฟการไหล</a><a href="#pipe">การต่อท่อ</a><a href="#whirlpool">ใช้กับอ่างน้ำวน</a><a href="#errors">Error</a>
 </nav>
 
 <section id="keys">
@@ -254,6 +273,101 @@ footer{color:var(--sub);font-size:12px;text-align:center;margin-top:18px}
 <p class="note">ข้อต่อที่ตัวปั๊มรองรับ 1½" หรือ 2" (ANSI) · ถ้าใช้งานไหลเกิน ~230 ล./นาที แนะนำท่อดูด 2½" แล้วลดขนาดเข้าปั๊ม · ท่อเล็กเกินไปทำให้เสียงดัง กินไฟ และเสี่ยงอากาศเข้าปั๊ม · ตัวเลขคำนวณจากขนาดในท่อ Sch40 โดยประมาณ</p>
 <h3 style="font-size:15px;margin:12px 0 4px">การต่อไฟ</h3>
 <p class="note" style="color:var(--ink)">ใช้ไฟ 1 เฟส 220–230 V ต่อขั้ว L1 (สายไฟ), L2(N) (สายนิวทรัล), G (สายดิน) · ต้องผ่านเบรกเกอร์กันดูด · ต่อสายดินและสาย Bonding ครบ · ห้ามฝังสายไฟในดิน ห้ามใช้ปลั๊กพ่วง · ให้ช่างไฟที่มีใบอนุญาตเป็นผู้ติดตั้ง</p>
+</section>
+
+<section id="whirlpool">
+<h2>ใช้แทนปั๊มอ่างน้ำวน (Whirlpool) ได้หรือไม่</h2>
+<p class="note" style="margin-top:0">ข้อมูลประกอบการตัดสินใจและออกแบบ · นำเสนอทั้งข้อดีและข้อจำกัด ผู้ใช้เป็นผู้ตัดสินใจ</p>
+<div class="verdict"><b>สรุป:</b> ทำได้ในทางเทคนิค และได้ข้อดีเรื่อง<b>ปรับความแรงหัวฉีดได้ต่อเนื่อง</b> แต่ปั๊มรุ่นนี้ผู้ผลิตออกแบบสำหรับสระว่ายน้ำ จึงต้อง<b>ออกแบบระบบเพิ่ม</b>ด้านตำแหน่งติดตั้ง ความปลอดภัยจากแรงดูด การป้องกันเดินตัวเปล่า และการควบคุม ตามแนวทางด้านล่าง</div>
+
+<details open><summary>1. เปรียบเทียบกับปั๊มอ่างน้ำวนทั่วไป</summary><div class="in">
+<table class="cmp">
+<tr><th></th><th>LX SFP220-VS</th><th>ปั๊มอ่างทั่วไป<br><span style="font-weight:400;color:var(--sub)">เช่น LX EA390, WTC150</span></th></tr>
+<tr><td>ออกแบบมาสำหรับ</td><td>กรองน้ำสระว่ายน้ำ</td><td>หัวฉีดนวดในอ่าง/สปา</td></tr>
+<tr><td>กำลัง</td><td>2.2 THP</td><td>1.25–1.5 HP</td></tr>
+<tr><td>กระแส (230 V)</td><td>8.5–7.4 A</td><td>≈ 4.6–5.8 A</td></tr>
+<tr><td>อัตราการไหลสูงสุด</td><td>510 ล./นาที</td><td>360–560 ล./นาที</td></tr>
+<tr><td>ระยะส่งสูงสุด</td><td>23 ม.</td><td>≈ 14.5 ม.</td></tr>
+<tr><td>ปรับความแรง</td><td><b>ต่อเนื่อง 450–3450 rpm</b> · ตั้งเวลา · สั่งผ่าน RS485</td><td>ความเร็วเดียว (บางรุ่น 2 ระดับ)</td></tr>
+<tr><td>เปิด-ปิด</td><td>ปุ่มที่ตัวปั๊ม หรือ RS485</td><td>ปุ่มลมที่ขอบอ่าง</td></tr>
+<tr><td>ตอนเริ่มเดิน</td><td>ค่าโรงงานเดินรอบดูดน้ำ 3450 rpm 10 นาที · <b>ตั้งลดได้ถึง 0 นาที</b> ผ่านปุ่มหรือ RS485 (ต้องวางปั๊มต่ำกว่าระดับน้ำ)</td><td>ทำงานทันที</td></tr>
+<tr><td>ขนาด</td><td>572×264×274 มม. · 20 กก. · มีหม้อกรอง</td><td>≈ 325–390×160–200×205–240 มม.</td></tr>
+<tr><td>ตำแหน่งตามผู้ผลิต</td><td><b>ห้ามวางใต้ขอบหุ้มอ่าง/ในตู้ปิด</b></td><td>ออกแบบให้ติดใต้ขอบหุ้มอ่าง</td></tr>
+<tr><td>ราคาอ้างอิง (สหรัฐ)</td><td>≈ US$748</td><td>≈ US$180–400</td></tr>
+</table>
+<p class="note">ข้อมูลปั๊มอ่างจากสเปกที่ผู้จำหน่ายเผยแพร่ ควรเทียบกับป้ายสเปกของปั๊มเดิมอีกครั้ง</p>
+</div></details>
+
+<details><summary>2. ข้อดีและข้อจำกัด</summary><div class="in">
+<p style="margin:4px 0"><span class="pill pro">ข้อดี</span></p>
+<ul class="l">
+<li>ปรับความแรงหัวฉีดได้ละเอียด จากเบาถึงแรงสุด</li>
+<li>แรงดันเหลือเฟือ รองรับหัวฉีดจำนวนมากหรือท่อยาว</li>
+<li>รอบต่ำเงียบกว่าและประหยัดไฟ</li>
+<li>ต่อแผงควบคุมภายนอกผ่าน RS485 / Modbus ได้</li>
+<li>มีหม้อกรองดักเศษผมในตัว</li>
+</ul>
+<p style="margin:10px 0 4px"><span class="pill con">ข้อจำกัด</span></p>
+<ul class="l">
+<li><b>พื้นที่:</b> ยาวเกือบ 60 ซม. ต้องอากาศถ่ายเท มักต้องวางนอกตัวอ่าง</li>
+<li><b>แรงดูด:</b> ปั๊มแรงสูงกับอ่างเล็ก เสี่ยงผม/อวัยวะถูกดูดติดถ้ารูดูดไม่ได้มาตรฐาน · ไม่มีระบบตัดแรงดูดอัตโนมัติ (SVRS)</li>
+<li><b>เดินตัวเปล่า:</b> อ่างถูกปล่อยน้ำทิ้งหลังใช้ เปิดปั๊มตอนไม่มีน้ำ ซีลเสีย</li>
+<li><b>การใช้งาน:</b> ต้องมีระบบเปิด-ปิดที่ขอบอ่างเพิ่ม</li>
+<li><b>รับประกัน:</b> เงื่อนไขผู้ผลิตไม่ครอบคลุมการใช้งานไม่ถูกต้อง ควรสอบถามก่อนใช้นอกงานสระ</li>
+<li><b>ต้นทุน:</b> ตัวปั๊มแพงกว่า และมีค่าดัดแปลงท่อ ไฟ ระบบควบคุม</li>
+</ul>
+</div></details>
+
+<details><summary>3. ผังระบบที่แนะนำ</summary><div class="in">
+<svg class="chart" viewBox="0 0 360 230" role="img" aria-label="ผังระบบอ่างน้ำวนกับปั๊ม SFP220-VS">
+<path d="M20 30 L20 110 Q20 130 40 130 L190 130 Q210 130 210 110 L210 30" fill="none" stroke="var(--sub)" stroke-width="1.5"/>
+<rect x="21" y="60" width="188" height="69" fill="#378ADD" fill-opacity=".12"/>
+<line x1="21" y1="60" x2="209" y2="60" stroke="#378ADD" stroke-dasharray="4 3"/>
+<text x="115" y="54" text-anchor="middle" class="ax">ระดับน้ำ</text>
+<circle cx="70" cy="124" r="5" fill="#D85A30"/><circle cx="150" cy="124" r="5" fill="#D85A30"/>
+<text x="110" y="148" text-anchor="middle" class="ax" style="fill:#D85A30">รูดูด ≥ 2 จุด + ฝากันดูดติด</text>
+<circle cx="206" cy="80" r="4" fill="#1D9E75"/><circle cx="24" cy="80" r="4" fill="#1D9E75"/>
+<text x="115" y="96" text-anchor="middle" class="ax" style="fill:#1D9E75">หัวฉีด</text>
+<rect x="196" y="64" width="10" height="10" fill="#7F77DD"/>
+<text x="250" y="22" class="ax" style="fill:#7F77DD">สวิตช์ระดับน้ำ</text>
+<line x1="206" y1="64" x2="248" y2="26" stroke="#7F77DD" stroke-width=".8"/>
+<path d="M70 129 L70 185 L230 185 M150 129 L150 185" fill="none" stroke="#D85A30" stroke-width="2"/>
+<rect x="230" y="165" width="80" height="40" rx="6" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+<text x="270" y="189" text-anchor="middle" class="ax" style="fill:var(--ink)">SFP220-VS</text>
+<text x="270" y="220" text-anchor="middle" class="ax">วางต่ำกว่าระดับน้ำ นอกตัวอ่าง</text>
+<path d="M310 175 L340 175 L340 80 L212 80" fill="none" stroke="#1D9E75" stroke-width="2"/>
+<rect x="290" y="110" width="62" height="34" rx="5" fill="none" stroke="#7F77DD" stroke-width="1.2"/>
+<text x="321" y="125" text-anchor="middle" class="ax" style="fill:#7F77DD">ตัวควบคุม</text>
+<text x="321" y="138" text-anchor="middle" class="ax" style="fill:#7F77DD">RS485</text>
+<text x="160" y="200" text-anchor="middle" class="ax">ท่อดูด (ส้ม) · ท่อส่งไปหัวฉีด (เขียว)</text>
+</svg>
+<p class="note">ภาพแนวคิด ไม่ใช่แบบก่อสร้าง · ตัวควบคุมรับสัญญาณสวิตช์ระดับน้ำ และสั่งปั๊มผ่าน RS485</p>
+</div></details>
+
+<details open><summary>4. แนวทางออกแบบทางวิศวกรรม</summary><div class="in">
+<ol class="eng">
+<li><b class="t">ตำแหน่งปั๊ม</b>วางนอกตัวอ่าง ที่แห้ง อากาศถ่ายเท บนฐานแข็งได้ระดับ ยึดน็อต · วาง<b>ต่ำกว่าระดับน้ำในอ่าง</b>ให้น้ำไหลเข้าปั๊มเอง (Flooded suction) เพื่อตัดรอบดูดน้ำได้ · เว้นระยะซ่อมบำรุงตามคู่มือ</li>
+<li><b class="t">รูดูดและความปลอดภัย</b>ใช้รูดูดอย่างน้อย 2 จุด ต่อท่อร่วมกัน ห่างกันพอไม่ให้ร่างกายปิดได้พร้อมกัน · ใช้ฝาครอบกันดูดติดที่ได้มาตรฐานและพิกัดการไหลไม่ต่ำกว่าที่ปั๊มใช้จริง · จำกัดรอบสูงสุดในระบบควบคุม</li>
+<li><b class="t">ขนาดอัตราการไหลและท่อ</b>อัตราการไหลรวม = จำนวนหัวฉีด × อัตราการไหลต่อหัว (ตามสเปกหัวฉีด) · เลือกขนาดท่อจากตาราง “ขนาดท่อ PVC” ในหัวข้อการต่อท่อ · ท่อดูดโตเท่าหรือโตกว่าท่อส่ง · ท่อตรงก่อนเข้าปั๊ม ≥ 5 เท่าของขนาดท่อ · ใส่ยูเนียนและวาล์วทั้งสองฝั่ง</li>
+<li><b class="t">ตั้งรอบใช้งาน</b>เริ่มที่รอบต่ำ แล้วเพิ่มจนได้ความแรงที่ต้องการ ใช้กราฟอัตราการไหลในคู่มือนี้ประกอบ · กำหนดรอบสูงสุดที่ยอมให้ใช้ในอ่าง</li>
+<li><b class="t">รอบดูดน้ำตอนเริ่ม</b>ค่าโรงงาน 3450 rpm 10 นาที ซึ่งหัวฉีดจะพุ่งแรงสุดช่วงแรก · ถ้าวางปั๊มต่ำกว่าระดับน้ำ ตั้งเวลาเป็น 0–1 นาที และลดรอบดูดน้ำ · <b>ทดสอบยืนยันกับปั๊มจริงก่อนส่งมอบ</b></li>
+<li><b class="t">ป้องกันเดินตัวเปล่า</b>ติดสวิตช์ระดับน้ำในอ่าง ต่อเข้าระบบควบคุมให้ปั๊มเดินได้เฉพาะเมื่อน้ำเกินระดับหัวฉีด · ระบบ RS485 อ่านกำลังไฟและอัตราการไหลจากปั๊มได้ ใช้เป็นชั้นป้องกันเสริม</li>
+<li><b class="t">ระบบควบคุม</b>ใช้ตัวควบคุมสั่งผ่าน RS485 (Modbus RTU) โหมด Takeover ปรับรอบได้ตลอด · ตัวควบคุมต้องสื่อสารกับปั๊มต่อเนื่อง ถ้าขาดเกิน ~60 วินาที ปั๊มจะหยุดเอง (ทำงานแบบปลอดภัย) · ติดปุ่มเปิด-ปิด/เลือกความแรงไว้ที่ขอบอ่าง (ใช้ไฟแรงดันต่ำหรือปุ่มลม)</li>
+<li><b class="t">ระบบไฟฟ้า</b>แยกวงจร ต่อผ่านเครื่องตัดไฟรั่ว 30 mA · ต่อสายดินและ Bonding โลหะรอบอ่าง · อุปกรณ์ไฟฟ้า/ปลั๊กอยู่นอกระยะเอื้อมจากอ่าง · ติดตั้งโดยช่างไฟที่มีใบอนุญาต</li>
+<li><b class="t">ทดสอบก่อนส่งมอบ</b>เปิดในแต่ละระดับความแรง · ทดสอบปล่อยน้ำออกแล้วกดเปิด ปั๊มต้องไม่เดิน · ทดสอบตัดสายสื่อสาร ปั๊มต้องหยุด · ตรวจรั่วซึมและเสียง</li>
+<li><b class="t">การรับประกัน</b>ยืนยันกับผู้จำหน่ายก่อนว่าการใช้งานกับอ่างอาบน้ำยังอยู่ในเงื่อนไขรับประกัน</li>
+</ol>
+</div></details>
+
+<details><summary>5. ข้อมูลที่ควรเตรียมก่อนออกแบบ</summary><div class="in">
+<ul class="l">
+<li>รุ่นและป้ายสเปกของปั๊มเดิม (HP, กระแส, ขนาดท่อ)</li>
+<li>จำนวนหัวฉีด สเปกอัตราการไหลต่อหัว และจำนวน/ตำแหน่งรูดูด</li>
+<li>ระดับน้ำในอ่างเทียบกับพื้นที่วางปั๊ม</li>
+<li>พื้นที่ว่างรอบอ่าง (กว้าง × ยาว × สูง)</li>
+<li>ต้องการปรับความแรงกี่ระดับ และเปิด-ปิดจากตำแหน่งใด</li>
+</ul>
+</div></details>
 </section>
 
 <section id="errors" class="alert">
